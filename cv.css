@@ -1,0 +1,226 @@
+/* ============================================================
+   Page CV — reprend les tokens et le thème du portfolio
+   ============================================================ */
+
+.cv-page {
+  padding-block: clamp(var(--space-10), 6vw, var(--space-16));
+}
+
+.cv-header {
+  margin-bottom: var(--space-10);
+}
+.cv-header__kicker {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+.cv-header__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+.cv-header__role {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: clamp(var(--space-6), 4vw, var(--space-10));
+  align-items: start;
+}
+
+/* Colonne latérale */
+.cv-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  position: sticky;
+  top: calc(var(--space-16) + var(--space-2));
+}
+.cv-side__box {
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.cv-side__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.cv-side__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text);
+}
+.cv-side__list .mono-line {
+  font-family: var(--font-display);
+  color: var(--color-text-muted);
+}
+.cv-side__list .mono-line .key {
+  color: var(--color-primary);
+}
+
+/* Colonne principale */
+.cv-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-10);
+}
+.cv-section__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--color-primary);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+.cv-item {
+  margin-bottom: var(--space-6);
+}
+.cv-item:last-child {
+  margin-bottom: 0;
+}
+.cv-item__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+.cv-item__title {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+.cv-item__date {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+  white-space: nowrap;
+}
+.cv-item__place {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-amber);
+  margin-bottom: var(--space-2);
+}
+.cv-item__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.cv-item__list li {
+  position: relative;
+  padding-left: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  max-width: none;
+}
+.cv-item__list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+.cv-skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2) var(--space-6);
+}
+.cv-skills li {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: none;
+}
+.cv-skills li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+/* Pied de page local */
+.cv-footer {
+  margin-top: var(--space-12);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-divider);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+
+/* Lien PDF secours, sélectionnable */
+.cv-pdf-note {
+  margin-top: var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-faint);
+}
+.cv-pdf-note a {
+  font-family: var(--font-display);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+  .cv-side {
+    position: static;
+  }
+}
+@media (max-width: 560px) {
+  .cv-skills {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Impression : version claire ---------- */
+@media print {
+  :root,
+  [data-theme='light'] {
+    --color-bg: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-offset: #f3f4f6;
+    --color-border: #d1d5db;
+    --color-divider: #e5e7eb;
+    --color-text: #111827;
+    --color-text-muted: #374151;
+    --color-text-faint: #6b7280;
+  }
+  body {
+    background-image: none;
+  }
+  .cv-side {
+    position: static;
+  }
+  .header,
+  .cv-actions,
+  .no-print {
+    display: none !important;
+  }
+}
